@@ -1,6 +1,6 @@
 // =====================================================================
 //  PRECIOS Y AJUSTES DE DONCUT. Este es el único archivo que hay que tocar
-//  para cambiar servicios, precios, euros por kilómetro o el WhatsApp.
+//  para cambiar servicios, precios, equipo, euros por kilómetro o el WhatsApp.
 // =====================================================================
 const DONCUT = {
   // Con prefijo y sin espacios, por ejemplo "34600000000".
@@ -14,6 +14,13 @@ const DONCUT = {
     { id: "barba", nombre: "Arreglo de barba", detalle: "Perfilado, rebaje y contornos", precio: 25, foto: "s-barba" },
     { id: "afeitado", nombre: "Afeitado tradicional", detalle: "A navaja, con toalla caliente", precio: 30, foto: "s-afeitado" },
     { id: "padre-hijo", nombre: "Padre e hijo", detalle: "Dos cortes en la misma visita", precio: 60, foto: "s-padre-hijo" },
+  ],
+
+  // Equipo: una línea por persona. La foto va en assets/img/equipo/ (vertical, 800 x 1000).
+  equipo: [
+    { nombre: "Álex Navarro", foto: "alex-navarro" },
+    { nombre: "David Morales", foto: "david-morales" },
+    { nombre: "Laura Martín", foto: "laura-martin" },
   ],
 
   // Desplazamiento

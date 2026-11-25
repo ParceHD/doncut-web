@@ -144,8 +144,14 @@ function pintar() {
   $("cesta").classList.toggle("visible", u > 0 && !enReserva);
 }
 
-let enReserva = false;
-new IntersectionObserver(([e]) => { enReserva = e.isIntersecting; $("cesta").classList.toggle("visible", unidades() > 0 && !enReserva); }, { rootMargin: "-15% 0px" }).observe($("reserva"));
+let enReserva = false; // también en contacto, para no tapar el botón de enviar
+const enPantalla = new Set();
+const vigila = new IntersectionObserver((es) => {
+  es.forEach((e) => (e.isIntersecting ? enPantalla.add(e.target) : enPantalla.delete(e.target)));
+  enReserva = enPantalla.size > 0;
+  $("cesta").classList.toggle("visible", unidades() > 0 && !enReserva);
+}, { rootMargin: "-15% 0px" });
+["reserva", "contacto"].forEach((id) => vigila.observe($(id)));
 
 // ---------- Distancia ----------
 const limpiar = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
@@ -231,7 +237,7 @@ function calcular() {
 });
 
 // ---------- Formulario por pasos ----------
-const pasos = todos(".paso");
+const pasos = todos("#ficha .paso");
 let paso = 0;
 
 const manana = new Date(); manana.setDate(manana.getDate() + 1);
@@ -318,13 +324,62 @@ $("ficha").addEventListener("submit", async (ev) => {
     "Total aproximado: " + euros(total()) + (viaje ? "" : " más desplazamiento"),
     "Nombre: " + valor("nombre"),
     $("adaptada").checked && "Necesito más tiempo o una visita adaptada.",
-    valor("notas") && "Notas: " + valor("notas"),
+    valor("notas") && "Comentarios: " + valor("notas"),
   ].filter(Boolean).join("\n");
   $("resumen-titulo").textContent = DONCUT.whatsapp ? "Tu solicitud" : "Vista previa. Así llegará tu solicitud:";
   $("resumen-texto").textContent = texto;
   $("resumen").hidden = false;
   if (DONCUT.whatsapp) window.open("https://wa.me/" + DONCUT.whatsapp + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
 });
+
+// ---------- Equipo ----------
+DONCUT.equipo.forEach((p) => {
+  const li = crear("li"), f = crear("figure"), d = crear("div"), im = new Image(800, 1000);
+  im.src = "assets/img/equipo/" + p.foto + ".jpg"; im.alt = "Retrato de " + p.nombre + " con el delantal de DONCUT"; im.loading = "lazy";
+  d.append(im); f.append(d, crear("figcaption", "", p.nombre)); li.append(f); $("lista-equipo").append(li);
+});
+
+// ---------- Contacto y trabaja con nosotros ----------
+const trabajo = () => $("m-trabajo").checked;
+function motivo() {
+  todos(".solo-trabajo").forEach((e) => { e.hidden = !trabajo(); });
+  $("l-mensaje").textContent = trabajo() ? "Cuéntanos algo de ti" : "Mensaje";
+  $("c-enviar").textContent = trabajo() ? "Enviar candidatura por WhatsApp" : "Enviar por WhatsApp";
+  fallo("c-mensaje", "");
+}
+function irATrabajo() {
+  $("m-trabajo").checked = true; motivo();
+  $("f-contacto").scrollIntoView();
+  $("c-nombre").focus({ preventScroll: true });
+}
+todos("[name=motivo]").forEach((r) => r.addEventListener("change", motivo));
+$("quiero-trabajar").addEventListener("click", irATrabajo);
+todos("[data-trabajo]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); irATrabajo(); }));
+$("f-contacto").addEventListener("input", (e) => { if ($("e-" + e.target.id)) fallo(e.target.id, ""); $("c-resumen").hidden = true; });
+$("f-contacto").addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const mal = [
+    ["c-nombre", valor("c-nombre") ? "" : "Escribe tu nombre."],
+    ["c-via", valor("c-via") ? "" : "Dinos cómo responderte."],
+    ["c-mensaje", valor("c-mensaje") ? "" : "Escribe un mensaje."],
+    ["c-acepto", $("c-acepto").checked ? "" : "Marca la casilla para continuar."],
+  ].map(([id, t]) => fallo(id, t)).find(Boolean);
+  if (mal) return $(mal).focus();
+  const texto = [
+    trabajo() ? "Hola, me gustaría trabajar con DONCUT." : "Hola, tengo una consulta para DONCUT.",
+    "Nombre: " + valor("c-nombre"),
+    "Teléfono o correo: " + valor("c-via"),
+    trabajo() && "Experiencia: " + $("c-anos").value,
+    trabajo() && valor("c-zona") && "Zona: " + valor("c-zona"),
+    trabajo() && valor("c-enlace") && "Mi trabajo: " + valor("c-enlace"),
+    "Mensaje: " + valor("c-mensaje"),
+  ].filter(Boolean).join("\n");
+  $("c-resumen-titulo").textContent = DONCUT.whatsapp ? "Tu mensaje" : "Vista previa. Así llegará tu mensaje:";
+  $("c-resumen-texto").textContent = texto;
+  $("c-resumen").hidden = false;
+  if (DONCUT.whatsapp) window.open("https://wa.me/" + DONCUT.whatsapp + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+});
+motivo();
 
 // ---------- Dónde ----------
 todos(".panel").forEach((p) => p.addEventListener("click", () => {
