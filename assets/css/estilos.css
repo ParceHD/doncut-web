@@ -172,7 +172,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .opciones__fila{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
 .opciones label{position:relative;cursor:pointer}
 .opciones input{position:absolute;opacity:0;inset:0}
-.opciones span{display:grid;place-items:center;min-height:52px;border:1px solid #a4927c;border-radius:10px;text-align:center;transition:background-color .25s,color .25s}
+.opciones label span{display:grid;place-items:center;min-height:52px;border:1px solid #a4927c;border-radius:10px;text-align:center;transition:background-color .25s,color .25s}
 .opciones label:hover span{border-color:var(--bronce)}
 .opciones input:checked+span{background:var(--negro);border-color:var(--negro);color:var(--oro-claro)}
 .opciones input:focus-visible+span{outline:3px solid var(--bronce);outline-offset:3px}
