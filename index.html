@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DONCUT | Barbero personal a domicilio en Barcelona</title>
+<meta name="description" content="Barbero personal a domicilio en Barcelona. Calcula el precio de tu visita y reserva. Tu estilo, donde tú estés.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0908">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Ir al contenido</a>
+
+<!-- Curvas de luz de la tarjeta, reutilizadas en toda la web -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="corte-video" clipPathUnits="objectBoundingBox"><path d="M.34 0C.22.2.02.42.03.7C.035.84.08.94.13 1L1 1L1 0Z"/></clipPath>
+    <clipPath id="corte-video-movil" clipPathUnits="objectBoundingBox"><path d="M0 0L1 0L1 .78C.8 .99.52 .99.3 .9C.18 .85.08 .86 0 .92Z"/></clipPath>
+    <linearGradient id="g-luz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6140"/><stop offset=".4" stop-color="#f7e3c4"/><stop offset=".6" stop-color="#d8b58a"/><stop offset="1" stop-color="#7d5534"/></linearGradient>
+    <linearGradient id="g-filo" x1="0" y1="0" x2="0" y2="1"><stop offset=".04" stop-color="#d8b58a" stop-opacity="0"/><stop offset=".2" stop-color="#c79c6f"/><stop offset=".5" stop-color="#f7e3c4"/><stop offset="1" stop-color="#9a6d45"/></linearGradient>
+    <radialGradient id="g-seda" cx=".7" cy=".55" r=".7"><stop offset="0" stop-color="#7c5a3e" stop-opacity=".85"/><stop offset=".55" stop-color="#3a2a1f" stop-opacity=".6"/><stop offset="1" stop-color="#0b0908" stop-opacity="0"/></radialGradient>
+    <symbol id="esquina" viewBox="0 0 400 320" preserveAspectRatio="none">
+      <path d="M0 0H400C250 30 110 120 0 300Z" fill="url(#g-seda)"/>
+      <path d="M400 0C250 30 110 120 0 300" fill="none" stroke="#f3d7ae" stroke-opacity=".25" stroke-width="9" style="filter:blur(6px)"/>
+      <path d="M400 0C250 30 110 120 0 300" fill="none" stroke="url(#g-luz)" stroke-width="1.6"/>
+      <path d="M352 0C220 22 90 86 0 196" fill="none" stroke="url(#g-luz)" stroke-opacity=".6" stroke-width="1"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="cabecera" id="cabecera">
+  <div class="cabecera__dentro">
+    <a class="cabecera__logo" href="#inicio"><img src="assets/img/dc.svg" width="44" height="38" alt=""><img src="assets/img/palabra-doncut.svg" width="148" height="15" alt="DONCUT, inicio"></a>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#servicios">Servicios y precios</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#donde">Dónde</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="boton boton--linea" href="#reserva">Reservar</a>
+    <button class="abrir" id="abrir" aria-label="Menú" aria-expanded="false" aria-controls="menu"></button>
+  </div>
+</header>
+
+<main id="contenido">
+
+<section class="portada" id="inicio">
+  <div class="portada__video">
+    <div class="portada__recorte"><video id="video" autoplay muted loop playsinline poster="assets/img/portada.jpg" aria-hidden="true"><source src="assets/img/portada.mp4" type="video/mp4"></video></div>
+    <svg class="filo filo--ancho" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="filo__halo" d="M34 0C22 20 2 42 3 70C3.5 84 8 94 13 100"/><path class="filo__linea" d="M34 0C22 20 2 42 3 70C3.5 84 8 94 13 100"/></svg>
+    <svg class="filo filo--movil" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="filo__halo" d="M100 78C80 99 52 99 30 90C18 85 8 86 0 92"/><path class="filo__linea" d="M100 78C80 99 52 99 30 90C18 85 8 86 0 92"/></svg>
+    <button class="pausa" id="pausa" type="button" aria-label="Pausar el vídeo"><span aria-hidden="true"></span></button>
+  </div>
+  <div class="portada__texto">
+    <p class="portada__marca"><img src="assets/img/dc.svg" width="150" height="129" alt=""><span><img src="assets/img/palabra-doncut.svg" width="260" height="26" alt="DONCUT"><small>Personal Barber</small></span></p>
+    <h1>Tu estilo, donde tú estés</h1>
+    <p class="portada__sub">Tu barbero personal a domicilio en Barcelona. Corte por <strong id="precio-corte">35&nbsp;€</strong> y el precio claro antes de reservar.</p>
+    <p class="acciones"><a class="boton boton--oro" href="#reserva">Calcula tu precio</a><a class="boton boton--linea" href="#servicios">Ver servicios</a></p>
+  </div>
+</section>
+
+<section class="bloque marfil" id="como">
+  <div class="como">
+    <div class="rv">
+      <h2>Un barbero solo para ti</h2>
+      <p class="entradilla">Sin esperas ni desplazamientos. Tú eliges el lugar y DONCUT pone todo lo demás.</p>
+      <ol class="pasos">
+        <li><h3>Elige</h3><p>Uno o varios servicios, para ti o para toda la familia.</p></li>
+        <li><h3>Mira tu precio</h3><p>Escribe tu dirección y verás el total aproximado al momento.</p></li>
+        <li><h3>Te visitamos</h3><p>Con la herramienta desinfectada. Al acabar, todo queda como estaba.</p></li>
+      </ol>
+    </div>
+    <div class="como__foto rv"><img src="assets/img/herramienta.jpg" width="1100" height="1350" loading="lazy" alt="Navaja y tijeras de barbero sobre una superficie negra"></div>
+  </div>
+</section>
+
+<section class="bloque negro" id="servicios">
+  <svg class="esquina esquina--a" aria-hidden="true"><use href="#esquina"/></svg>
+  <div class="servicios">
+    <div class="servicios__foto rv" id="fotos"></div>
+    <div class="rv">
+      <h2>Servicios y precios</h2>
+      <p class="entradilla">Añade lo que necesites. El desplazamiento se calcula con tu dirección: 0,40&nbsp;€ por kilómetro.</p>
+      <ul class="lista" id="lista"></ul>
+      <p class="nota">Precios orientativos. Te confirmamos el total antes de la visita.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque marfil" id="donde">
+  <h2 class="rv">Donde tú estés</h2>
+  <div class="paneles rv">
+    <button class="panel activo" data-lugar="En casa" aria-pressed="true"><img src="assets/img/casa.jpg" width="1100" height="1200" loading="lazy" alt=""><span><b>En casa</b><small>Tu salón, tu música, tu hora.</small></span></button>
+    <button class="panel" data-lugar="En el hotel" aria-pressed="false"><img src="assets/img/hotel.jpg" width="1100" height="1200" loading="lazy" alt=""><span><b>En el hotel</b><small>En tu habitación, antes de salir.</small></span></button>
+    <button class="panel" data-lugar="En el trabajo" aria-pressed="false"><img src="assets/img/despacho.jpg" width="1100" height="1200" loading="lazy" alt=""><span><b>En el trabajo</b><small>Entre dos reuniones.</small></span></button>
+    <button class="panel" data-lugar="En un evento" aria-pressed="false"><img src="assets/img/boda.jpg" width="1100" height="1200" loading="lazy" alt=""><span><b>En un evento</b><small>Bodas, celebraciones y rodajes.</small></span></button>
+  </div>
+  <div class="todos rv">
+    <h3>Para todo el mundo</h3>
+    <p>Niños, mayores y personas con movilidad reducida. Si la visita necesita más tiempo o alguna adaptación, márcalo al reservar y la preparamos contigo.</p>
+  </div>
+</section>
+
+<section class="bloque negro reserva-bloque" id="reserva">
+  <svg class="esquina esquina--b" aria-hidden="true"><use href="#esquina"/></svg>
+  <svg class="esquina esquina--c" aria-hidden="true"><use href="#esquina"/></svg>
+  <div class="reserva">
+    <form class="ficha" id="ficha" novalidate>
+      <h2>Calcula y reserva</h2>
+      <ol class="progreso" id="progreso"><li class="activo" aria-current="step">Servicios</li><li>Dirección</li><li>Tus datos</li></ol>
+
+      <fieldset class="paso" data-paso="0">
+        <legend>¿Qué necesitas?</legend>
+        <div class="ancho" id="contadores"></div>
+        <p class="fallo ancho" id="e-servicios" role="alert" hidden></p>
+      </fieldset>
+
+      <fieldset class="paso" data-paso="1" hidden>
+        <legend>¿Dónde vamos?</legend>
+        <div class="campo"><label for="lugar">Lugar</label><select id="lugar"><option>En casa</option><option>En el hotel</option><option>En el trabajo</option><option>En un evento</option></select></div>
+        <div class="campo" id="c-sitio" hidden><label for="sitio" id="l-sitio">Nombre del hotel</label><input id="sitio" type="text" autocomplete="organization"></div>
+        <div class="campo c4"><label for="calle">Calle</label><input id="calle" type="text" autocomplete="address-line1" aria-describedby="e-calle" placeholder="Carrer de Balmes"><p class="fallo" id="e-calle" hidden></p></div>
+        <div class="campo c2"><label for="numero">Número</label><input id="numero" type="text" maxlength="8" aria-describedby="e-numero"><p class="fallo" id="e-numero" hidden></p></div>
+        <div class="campo c2"><label for="escalera">Escalera</label><input id="escalera" type="text" maxlength="10" placeholder="Opcional"></div>
+        <div class="campo c2"><label for="piso" id="l-piso">Piso</label><input id="piso" type="text" maxlength="20" placeholder="3.º o casa" aria-describedby="e-piso"><p class="fallo" id="e-piso" hidden></p></div>
+        <div class="campo c2"><label for="puerta">Puerta</label><input id="puerta" type="text" maxlength="10" placeholder="Opcional"></div>
+        <div class="campo"><label for="cp">Código postal</label><input id="cp" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" aria-describedby="e-cp"><p class="fallo" id="e-cp" hidden></p></div>
+        <div class="campo"><label for="poblacion">Población</label><input id="poblacion" type="text" autocomplete="address-level2" value="Barcelona" aria-describedby="e-poblacion"><p class="fallo" id="e-poblacion" hidden></p></div>
+        <div class="distancia ancho" id="distancia" role="status"><span id="distancia-texto">Escribe la dirección y calculamos el desplazamiento.</span></div>
+        <div class="ancho opciones" role="radiogroup" aria-labelledby="t-parking" aria-describedby="e-parking">
+          <p id="t-parking">¿Nos facilitas parking? Si no, se suman <span id="pk-precio">7&nbsp;€</span>, la media de 2 horas en zona azul o verde.</p>
+          <div class="opciones__fila">
+            <label><input type="radio" name="parking" id="pk-si" value="si"><span>Sí</span></label>
+            <label><input type="radio" name="parking" id="pk-no" value="no"><span>No</span></label>
+            <label><input type="radio" name="parking" id="pk-ns" value="ns"><span>No lo sé</span></label>
+          </div>
+          <p class="fallo" id="e-parking" hidden></p>
+        </div>
+        <div class="campo ancho"><label for="acceso">Indicaciones para llegar</label><input id="acceso" type="text" placeholder="Timbre, portería, plaza de parking (opcional)"></div>
+      </fieldset>
+
+      <fieldset class="paso" data-paso="2" hidden>
+        <legend>¿Cuándo y a nombre de quién?</legend>
+        <div class="campo"><label for="dia">Día</label><input id="dia" type="date" aria-describedby="e-dia"><p class="fallo" id="e-dia" hidden></p></div>
+        <div class="campo"><label for="franja">Franja</label><select id="franja"><option>Por la mañana</option><option>A mediodía</option><option>Por la tarde</option><option>A partir de las 20 h</option></select></div>
+        <div class="campo ancho"><label for="nombre">Nombre y apellido</label><input id="nombre" type="text" autocomplete="name" aria-describedby="e-nombre"><p class="fallo" id="e-nombre" hidden></p></div>
+        <div class="campo ancho"><label for="notas">Algo que debamos saber</label><textarea id="notas" rows="2" placeholder="Opcional"></textarea></div>
+        <div class="ancho casilla"><label for="adaptada"><input id="adaptada" type="checkbox"><span>Necesito más tiempo o una visita adaptada.</span></label></div>
+        <div class="ancho casilla"><label for="acepto"><input id="acepto" type="checkbox" aria-describedby="e-acepto"><span>He leído la <a href="politica-privacidad.html" target="_blank">política de privacidad</a>.</span></label><p class="fallo" id="e-acepto" hidden></p></div>
+      </fieldset>
+
+      <p class="total-corto" aria-hidden="true"><span>Total aproximado</span><b id="total-corto">0 €</b></p>
+      <div class="ficha__acciones">
+        <button class="atras" id="atras" type="button" hidden>Atrás</button>
+        <button class="boton boton--oro" id="seguir" type="submit">Siguiente</button>
+      </div>
+      <div class="resumen" id="resumen" role="status" hidden><strong id="resumen-titulo"></strong><pre id="resumen-texto"></pre></div>
+    </form>
+
+    <aside class="tarjeta" aria-label="Tu presupuesto">
+      <svg class="esquina tarjeta__a" aria-hidden="true"><use href="#esquina"/></svg>
+      <svg class="esquina tarjeta__b" aria-hidden="true"><use href="#esquina"/></svg>
+      <div class="tarjeta__dentro">
+        <img class="tarjeta__logo" src="assets/img/dc.svg" width="92" height="79" alt="">
+        <h3>Tu presupuesto</h3>
+        <ul class="lineas" id="lineas"></ul>
+        <p class="total" role="status"><span>Total aproximado</span><b id="total">0 €</b></p>
+        <dl class="cita" id="cita"></dl>
+        <p class="tarjeta__nota">El desplazamiento se cobra una vez por visita, aunque seáis varios.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="bloque marfil" id="preguntas">
+  <div class="preguntas">
+    <h2 class="rv">Preguntas frecuentes</h2>
+    <div class="rv">
+      <details><summary>¿Cómo se calcula el desplazamiento?</summary><p>Son 0,40&nbsp;€ en total por cada kilómetro por carretera entre la Ronda del General Mitre de Barcelona y tu dirección. Se suma una sola vez por visita.</p></details>
+      <details><summary>¿El precio que veo es el definitivo?</summary><p>Es una estimación bastante ajustada. Te confirmamos el total por WhatsApp antes de cerrar la cita.</p></details>
+      <details><summary>¿Qué pasa si no tengo parking?</summary><p>No hay problema. Sumamos 7&nbsp;€, la media de 2 horas en zona azul o verde según las tarifas de Barcelona de 2026. Si facilitas plaza, no se suma nada.</p></details>
+      <details><summary>¿Qué tengo que preparar?</summary><p>Una silla, un enchufe y buena luz. Traemos el resto y protegemos el suelo.</p></details>
+      <details><summary>¿Podemos cortarnos el pelo varias personas?</summary><p>Sí. Añade los servicios de cada una y pagaréis un único desplazamiento.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <svg class="esquina esquina--c" aria-hidden="true"><use href="#esquina"/></svg>
+  <img class="pie__logo" src="assets/img/logo-doncut.svg" width="420" height="262" loading="lazy" alt="DONCUT, Personal Barber">
+  <p class="pie__lema">Tu estilo, donde tú estés</p>
+  <p class="pie__fila"><a href="#servicios">Servicios</a><a href="#reserva">Reservar</a><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a></p>
+  <a class="firma" href="https://tessenconsulting.com" target="_blank" rel="noopener"><img src="assets/img/tessen.png" width="22" height="19" alt="">Web creada por <b>TESSEN</b></a>
+</footer>
+
+<div class="cesta" id="cesta"><p><span id="cesta-n"></span> <b id="cesta-total"></b></p><a class="boton boton--oro" href="#reserva">Continuar</a></div>
+
+<script src="assets/js/precios.js"></script>
+<script src="assets/js/web.js"></script>
+</body>
+</html>
